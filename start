@@ -1,0 +1,11 @@
+#! /bin/bash
+
+PROFILE=sgminer
+LOG=/var/log/watchdog/test.log
+echo "$(date) starting test-binary" >> $LOG
+cd /usr/local/bin/mchecker
+java -cp ./mchecker-0.0.3.jar:./dependency/* -Dspring.profiles.active=$PROFILE -Djava.util.logging.config.file=logging.properties my.app.mchecker.MChecker
+RES=$?
+echo "result is: "$RES >> $LOG
+exit $RES
+
