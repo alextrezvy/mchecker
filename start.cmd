@@ -9,6 +9,7 @@ java -cp .\mchecker-0.0.4.jar;.\dependency\* -Dspring.profiles.active=%PROFILE% 
 if %errorlevel% neq 0 (
   echo "Miner error, rebooting..."
   shutdown /r
+  exit
 ) else (
   echo "Miner OK, sleeping..."
   choice /c a /d a /t 60
