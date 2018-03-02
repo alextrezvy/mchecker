@@ -3,6 +3,7 @@ package my.app.mchecker.impl;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
 
 import my.app.mchecker.Checker;
 
@@ -28,9 +29,11 @@ public class SGMinerChecker extends TcpRequestChecker implements Checker {
 		boolean result = true;
 		try {
 			String response = sendRequest(host, port, request);
-			if (response.length() == 0) {
+			if (response.isEmpty()) {
 				result = false;
-			}
+			} else {
+				log.log(Level.INFO, response);
+			}	
 		} catch (IOException e) {
 			log.log(Level.INFO, e.getMessage());
 			result = false;

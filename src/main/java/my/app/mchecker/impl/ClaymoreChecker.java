@@ -36,6 +36,9 @@ public class ClaymoreChecker extends TcpRequestChecker implements Checker {
 			Response respObj = om.readValue(response, Response.class);
 			if ( !((respObj.error == null) || "null".equals(respObj.error)) ) {
 				result = false;
+			} else {
+				log.log(Level.INFO, "Hashrate: {0}", respObj.result.get(3));
+				log.log(Level.INFO, "Temperature|Fan: {0}", respObj.result.get(6));
 			}
 		} catch (IOException e) {
 			log.log(Level.INFO, e.getMessage());

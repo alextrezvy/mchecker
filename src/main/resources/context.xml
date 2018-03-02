@@ -23,6 +23,14 @@
 			<constructor-arg index="1" value="${port}"/>
 			<constructor-arg index="2" value='{"command":"version"}'/>    
 	    </bean>  	
-	</beans>	 
+	</beans>	
+	
+	<beans profile="xmrstak">
+		<bean id="xmrstakChecker" class="my.app.mchecker.impl.XMRStakChecker">
+			<constructor-arg index="0" value="${host}"/>
+			<constructor-arg index="1" value="${port}"/>
+			<constructor-arg index="2" value=""/>		
+		</bean>
+	</beans> 
 
 </beans>
